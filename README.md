@@ -11,7 +11,7 @@ Photo-Vault is a web app to store your photos.
 
 - [ x ] Make it deploy ( vercel )
 - [ x ] Scaffold basic UI with mocked data
-- [ ] set up DB ( postgres )
+- [ x ] set up DB ( postgres )
 - [ ] connect DB to UI
 - [ ] add auth ( clerk )
 - [ ] add photo upload
