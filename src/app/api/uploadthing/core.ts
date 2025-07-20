@@ -16,7 +16,7 @@ export const ourFileRouter = {
              * @see https://docs.uploadthing.com/file-routes#route-config
              */
             maxFileSize: "4MB",
-            maxFileCount: 1,
+            maxFileCount: 5,
         },
     })
         // Set permissions and file types for this FileRoute
@@ -37,6 +37,7 @@ export const ourFileRouter = {
             await db.insert(images).values({
                 name: file.name,
                 url: file.ufsUrl,
+                userId: metadata.userId,
             });
 
             // !!! Whatever is returned here is sent to the clientside `onClientUploadComplete` callback
