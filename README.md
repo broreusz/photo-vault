@@ -14,9 +14,9 @@ Photo-Vault is a web app to store your photos.
 - [x] set up DB ( postgres )
 - [x] connect DB to UI
 - [x] add auth ( clerk )
-- [ ] "taint" (server-only)
+- [x] "taint" (server-only)
 - [x] add photo upload
-- [ ] use next Image component
+- [x] use next Image component
 - [ ] error managing ( sentry )
 - [ ] routing for image page
 - [ ] Delete button with servar actions
