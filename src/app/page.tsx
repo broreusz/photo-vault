@@ -1,20 +1,10 @@
 import { SignedIn, SignedOut } from "@clerk/nextjs";
-import { currentUser } from "@clerk/nextjs/server";
-import { db } from "~/server/db";
+import { getMyImages } from "~/server/queries";
 
 export const dynamic = "force-dynamic"; // to avoid caching of the page as we are fetching data from the database
 
 export async function Images() {
-  const user = await currentUser();
-
-  if (!user) {
-    return <div>No user found. Please sign in.</div>;
-  }
-
-  const photos = await db.query.images.findMany({
-    orderBy: (images, { desc }) => [desc(images.createdAt)],
-    where: (images, { eq }) => eq(images.userId, user.id),
-  });
+  const photos = await getMyImages();
 
   return (
     <div className="flex flex-wrap gap-4">
