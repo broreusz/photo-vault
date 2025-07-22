@@ -10,11 +10,11 @@ export default async function FullImageView(props: { id: string }) {
     const userInfo = await (await clerkClient()).users.getUser(image.userId);
 
     return (
-        <div className="flex h-full w-screen min-w-0 max-h-full items-center justify-center text-white">
-            <div className="flex-shrink flex-grow flex justify-center items-center max-h-full">
-                <img src={image.url} className="max-h-full object-contain" alt={image.name} />
+        <div className="flex h-full w-screen min-w-0 items-center justify-center text-white">
+            <div className="flex-shrink flex-grow flex justify-center items-center">
+                <img src={image.url} className=" object-contain" alt={image.name} />
             </div>
-            <div className="flex min-h-full w-56 flex-shrink-0 flex-col border-l">
+            <div className="flex min-h-full w-56 flex-shrink-0 flex-col">
                 <div className="border-b p-2 text-center text-xl">{image.name}</div>
 
                 <div className="p-2">
