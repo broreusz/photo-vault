@@ -24,7 +24,8 @@ const geist = Geist({
 
 export default function RootLayout({
   children,
-}: Readonly<{ children: React.ReactNode }>) {
+  modal
+}: Readonly<{ children: React.ReactNode, modal: React.ReactNode; }>) {
   return (
     <ClerkProvider>
       <html lang="en" className={`${geist.variable}`}>
@@ -40,6 +41,8 @@ export default function RootLayout({
         <body className="flex flex-col gap-4">
           <TopNav />
           {children}
+          {modal}
+          <div id="modal-root" />
         </body>
       </html>
     </ClerkProvider>
