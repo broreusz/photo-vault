@@ -1,22 +1,30 @@
+import { clerkClient } from "@clerk/nextjs/server";
 import { getImage } from "~/server/queries";
 
 export default async function FullImageView(props: { id: string }) {
-    const idAsNumber = parseInt(props.id);
-
-    if (isNaN(idAsNumber)) {
-        return <div>Invalid image ID</div>;
-    }
+    const idAsNumber = Number(props.id);
+    if (Number.isNaN(idAsNumber)) throw new Error("Invalid photo id");
 
     const image = await getImage(idAsNumber);
 
+    const userInfo = await (await clerkClient()).users.getUser(image.userId);
+
     return (
-        <div className="w-full h-full max-h-full flex">
-            <div className="flex justify-center items-center flex-shrink max-h-full">
-                <img src={image.url} alt={image.name} className="max-h-full object-contain" />
+        <div className="flex h-full w-screen min-w-0 max-h-full items-center justify-center text-white">
+            <div className="flex-shrink flex-grow flex justify-center items-center max-h-full">
+                <img src={image.url} className="max-h-full object-contain" alt={image.name} />
             </div>
-            <div className="w-48 flex flex-shrink-0 flex-col gap-2">
-                <div className="text-xl font-bold">
-                    {image.name}
+            <div className="flex min-h-full w-56 flex-shrink-0 flex-col border-l">
+                <div className="border-b p-2 text-center text-xl">{image.name}</div>
+
+                <div className="p-2">
+                    <div>Uploaded By:</div>
+                    <div>{userInfo.fullName}</div>
+                </div>
+
+                <div className="p-2">
+                    <div>Created On:</div>
+                    <div>{image.createdAt.toLocaleDateString()}</div>
                 </div>
             </div>
         </div>
