@@ -10,8 +10,15 @@ export default async function FullImageView(props: { id: string }) {
     const image = await getImage(idAsNumber);
 
     return (
-        <div className="flex justify-center items-center">
-            <img src={image.url} alt={image.name} width={192} height={192} style={{ objectFit: "contain" }} />
+        <div className="w-full h-full max-h-full flex">
+            <div className="flex justify-center items-center flex-shrink max-h-full">
+                <img src={image.url} alt={image.name} className="max-h-full object-contain" />
+            </div>
+            <div className="w-48 flex flex-shrink-0 flex-col gap-2">
+                <div className="text-xl font-bold">
+                    {image.name}
+                </div>
+            </div>
         </div>
     );
 }
