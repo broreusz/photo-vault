@@ -8,10 +8,6 @@
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
-body {
-  @apply bg-black text-white;
-}
-
 dialog {
   max-width: 100vw;
   max-height: 100vh;

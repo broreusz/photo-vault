@@ -47,12 +47,11 @@ export default function UploadButton() {
         onUploadBegin: () => {
             toast.info(<div className="flex items-center gap-2">
                 {LoadingSpinner()}
-                Uploading...
+                <span className="text-xs">Uploading...</span>
             </div>, {
                 description: "This may take a while...",
                 id: "upload-begin",
             });
-
         },
         onUploadError: (error: Error) => {
             toast.error(`Error uploading ${error.message}`);
@@ -63,6 +62,7 @@ export default function UploadButton() {
             router.refresh();
         }
     });
+
 
     return (
         <div>
