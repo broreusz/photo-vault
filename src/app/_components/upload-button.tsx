@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 import { useUploadThing } from "~/utils/uploadthing";
 
 // inferred input off useUploadThing
@@ -33,6 +34,12 @@ export default function UploadButton() {
     const router = useRouter();
 
     const { inputProps, isUploading } = useUploadThingInputProps("imageUploader", {
+        onUploadBegin: (file) => {
+            toast.info(`Uploading ${file}...`);
+        },
+        onUploadError: (error: Error) => {
+            toast.error(`Error uploading ${error.message}`);
+        },
         onClientUploadComplete: () => {
             router.refresh();
         }

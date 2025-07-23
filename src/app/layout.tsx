@@ -10,6 +10,7 @@ import { extractRouterConfig } from "uploadthing/server";
 import { ourFileRouter } from "./api/uploadthing/core";
 
 import TopNav from "./_components/topnav";
+import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
   title: "Photo-Vault",
@@ -46,6 +47,7 @@ export default function RootLayout({
             </main>
           </div>
           {modal}
+          <Toaster />
           <div id="modal-root" />
         </body>
       </html>
