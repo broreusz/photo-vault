@@ -12,7 +12,7 @@ export default function TopNav() {
                 </Link>
             </div>
 
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-4">
                 <SignedOut>
                     <SignInButton />
                 </SignedOut>
